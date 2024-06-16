@@ -24,3 +24,22 @@ function getPlayerChoice() {
     return getPlayerChoice();
   }
 }
+
+let playerScore = 0;
+let computerScore = 0;
+
+function playRound(playerChoice, computerChoice) {
+  if (playerChoice === computerChoice) {
+    console.log(`It's a tie! You both picked ${playerChoice}.`);
+  }
+  else if (playerChoice === 'rock' && computerChoice === 'scissors' ||
+    playerChoice === 'paper' && computerChoice === 'rock' ||
+    playerChoice === 'scissors' && computerChoice === 'paper') {
+    playerScore++
+    console.log(`You win! ${playerChoice} beats ${computerChoice}.`);
+  }
+  else {
+    computerScore++
+    console.log(`You lose! ${computerChoice} beats ${playerChoice}.`);
+  }
+}
