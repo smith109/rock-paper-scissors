@@ -2,6 +2,10 @@ function getRandomNumber() {
   return Math.floor(Math.random() * 3);
 }
 
+function capitalize(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 function getComputerChoice() {
   const choices = ['rock', 'paper', 'scissors'];
   return choices[getRandomNumber()];
@@ -36,10 +40,10 @@ function playRound(playerChoice, computerChoice) {
     playerChoice === 'paper' && computerChoice === 'rock' ||
     playerChoice === 'scissors' && computerChoice === 'paper') {
     playerScore++
-    console.log(`You win! ${playerChoice} beats ${computerChoice}.`);
+    console.log(`You win! ${capitalize(playerChoice)} beats ${computerChoice}.`);
   }
   else {
     computerScore++
-    console.log(`You lose! ${computerChoice} beats ${playerChoice}.`);
+    console.log(`You lose! ${capitalize(computerChoice)} beats ${playerChoice}.`);
   }
 }
