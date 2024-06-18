@@ -29,6 +29,16 @@ function getPlayerChoice() {
   }
 }
 
+function declareWinner(playerScore, computerScore) {
+  if (playerScore > computerScore) {
+    console.log('You won the game!');
+  } else if (playerScore < computerScore) {
+    console.log('You lost the game.');
+  } else {
+    console.log('It\'s a tie. Would you like a rematch?');
+  }
+}
+
 function playGame() {
   let playerScore = 0;
   let computerScore = 0;
@@ -55,6 +65,8 @@ function playGame() {
     playRound(playerSelection, computerSelection);
     console.log(`Player: ${playerScore} || Computer ${computerScore}`);
   }
+  
+  declareWinner(playerScore, computerScore);
 }
 
 playGame();
