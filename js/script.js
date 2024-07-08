@@ -1,6 +1,7 @@
 const buttonContainer = document.querySelector('.button-container');
 const resultsDiv = document.querySelector('.results');
 const scoreboard = document.querySelector('.scoreboard');
+const winnerDiv = document.querySelector('.winner');
 let playerScore = 0;
 let computerScore = 0;
 
@@ -51,6 +52,7 @@ function updateScore(winner) {
   if (winner === 'computer') {
     computerScore++;
   }
+  checkGameOver();
 }
 
 function updateDisplay(message) {
@@ -58,12 +60,10 @@ function updateDisplay(message) {
   scoreboard.textContent = `Player: ${playerScore} || Computer: ${computerScore}`;
 }
 
-function declareWinner(playerScore, computerScore) {
-  if (playerScore > computerScore) {
-    console.log('You won the game!');
-  } else if (playerScore < computerScore) {
-    console.log('You lost the game.');
-  } else {
-    console.log('It\'s a tie. Would you like a rematch?');
+function checkGameOver() {
+  if (playerScore === 5) {
+    winnerDiv.textContent = 'You won the game!';
+  } else if (computerScore === 5) {
+    winnerDiv.textContent = 'You lost the game.';
   }
 }
