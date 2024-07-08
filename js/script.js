@@ -63,7 +63,15 @@ function updateDisplay(message) {
 function checkGameOver() {
   if (playerScore === 5) {
     winnerDiv.textContent = 'You won the game!';
+    disableButtons();
   } else if (computerScore === 5) {
     winnerDiv.textContent = 'You lost the game.';
+    disableButtons();
   }
+}
+
+function disableButtons() {
+  document.querySelectorAll('button').forEach(
+    button => button.disabled = true
+  );
 }
