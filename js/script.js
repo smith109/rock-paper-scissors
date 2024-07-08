@@ -1,4 +1,5 @@
 const buttonContainer = document.querySelector('.button-container');
+const resultsDiv = document.querySelector('.results');
 let playerScore = 0;
 let computerScore = 0;
 
@@ -29,18 +30,22 @@ function handlePlayerSelection(event) {
 
 function playRound(playerChoice, computerChoice) {
   if (playerChoice === computerChoice) {
-    console.log(`It's a tie! You both picked ${playerChoice}.`);
+    updateDisplay(`It's a tie! You both picked ${playerChoice}.`);
   }
   else if (playerChoice === 'rock' && computerChoice === 'scissors' ||
     playerChoice === 'paper' && computerChoice === 'rock' ||
     playerChoice === 'scissors' && computerChoice === 'paper') {
     playerScore++;
-    console.log(`You win! ${capitalize(playerChoice)} beats ${computerChoice}.`);
+    updateDisplay(`You win! ${capitalize(playerChoice)} beats ${computerChoice}.`);
   }
   else {
     computerScore++;
-    console.log(`You lose! ${capitalize(computerChoice)} beats ${playerChoice}.`);
+    updateDisplay(`You lose! ${capitalize(computerChoice)} beats ${playerChoice}.`);
   }
+}
+
+function updateDisplay(message) {
+  resultsDiv.textContent = message;
 }
 
 function declareWinner(playerScore, computerScore) {
