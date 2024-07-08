@@ -1,5 +1,6 @@
 const buttonContainer = document.querySelector('.button-container');
 const resultsDiv = document.querySelector('.results');
+const scoreboard = document.querySelector('.scoreboard');
 let playerScore = 0;
 let computerScore = 0;
 
@@ -24,7 +25,6 @@ function handlePlayerSelection(event) {
     const playerSelection = target.classList.value;
     const computerSelection = getComputerChoice();
     playRound(playerSelection, computerSelection);
-    console.log(`Player: ${playerScore} || Computer ${computerScore}`);
   }
 }
 
@@ -35,17 +35,27 @@ function playRound(playerChoice, computerChoice) {
   else if (playerChoice === 'rock' && computerChoice === 'scissors' ||
     playerChoice === 'paper' && computerChoice === 'rock' ||
     playerChoice === 'scissors' && computerChoice === 'paper') {
-    playerScore++;
+    updateScore('player');
     updateDisplay(`You win! ${capitalize(playerChoice)} beats ${computerChoice}.`);
   }
   else {
-    computerScore++;
+    updateScore('computer');
     updateDisplay(`You lose! ${capitalize(computerChoice)} beats ${playerChoice}.`);
+  }
+}
+
+function updateScore(winner) {
+  if (winner === 'player') {
+    playerScore++;
+  }
+  if (winner === 'computer') {
+    computerScore++;
   }
 }
 
 function updateDisplay(message) {
   resultsDiv.textContent = message;
+  scoreboard.textContent = `Player: ${playerScore} || Computer: ${computerScore}`;
 }
 
 function declareWinner(playerScore, computerScore) {
