@@ -7,8 +7,14 @@
 body {
   line-height: 1.5;
   text-align: center;
-  background: #a097976b;
+  background: #2A324B;
+  color: #ffffff;
   font-family: 'Trebuchet MS',
-    'Lucida Sans Unicode', 'Lucida Grande', 
+    'Lucida Sans Unicode', 'Lucida Grande',
     'Lucida Sans', Arial, sans-serif;
+}
+
+h1 {
+  font-size: 40px;
+  padding: 16px;
 }
