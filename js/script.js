@@ -82,8 +82,15 @@ function disableButtons() {
   );
 }
 
+function enableButtons() {
+  document.querySelectorAll('button').forEach(
+    button => button.disabled = false
+  );
+}
+
 function resetGame() {
   playerScore = 0;
   computerScore = 0;
   updateDisplay('Please make a selection.');
+  enableButtons();
 }
