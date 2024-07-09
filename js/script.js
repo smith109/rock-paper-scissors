@@ -2,10 +2,12 @@ const buttonContainer = document.querySelector('.button-container');
 const resultsDiv = document.querySelector('.results');
 const scoreboard = document.querySelector('.scoreboard');
 const winnerDiv = document.querySelector('.winner');
+const resetBtn = document.querySelector('.reset');
 let playerScore = 0;
 let computerScore = 0;
 
 buttonContainer.addEventListener('click', handlePlayerSelection);
+resetBtn.addEventListener('click', resetGame);
 
 function getRandomNumber() {
   return Math.floor(Math.random() * 3);
@@ -72,6 +74,16 @@ function checkGameOver() {
 
 function disableButtons() {
   document.querySelectorAll('button').forEach(
-    button => button.disabled = true
+    button => {
+      if (button.classList.value !== 'reset') {
+        button.disabled = true;
+      }
+    }
   );
+}
+
+function resetGame() {
+  playerScore = 0;
+  computerScore = 0;
+  updateDisplay('Please make a selection.');
 }
