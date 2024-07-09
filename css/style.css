@@ -16,5 +16,15 @@ body {
 
 h1 {
   font-size: 40px;
-  padding: 16px;
+  padding: 12px;
+}
+
+div.scoreboard {
+  background: #767B91;
+  font-size: 32px;
+  width: 700px;
+  margin: 16px auto;
+  border: 3px solid #201e23;
+  border-radius: 5px;
+  padding: 20px;
 }
