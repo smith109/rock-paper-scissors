@@ -91,6 +91,7 @@ function enableButtons() {
 function resetGame() {
   playerScore = 0;
   computerScore = 0;
+  winnerDiv.textContent = '';
   updateDisplay('Please make a selection.');
   enableButtons();
 }
