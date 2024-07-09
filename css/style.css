@@ -28,3 +28,17 @@ div.scoreboard {
   border-radius: 5px;
   padding: 20px;
 }
+
+div.winner,
+div.results {
+  font-size: 25px;
+}
+
+div.winner {
+  height: 15px;
+  margin-bottom: 20px;
+}
+
+div.results {
+  margin-bottom: 12px;
+}
