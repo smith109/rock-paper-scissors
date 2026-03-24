@@ -35,3 +35,8 @@ function updateScore(winner) {
     computerScore += 1;
   }
 }
+
+function displayResult(message) {
+  console.log(`Human: ${humanScore} || Computer: ${computerScore}`);
+  console.log(message);
+}
