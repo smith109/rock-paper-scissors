@@ -1,3 +1,6 @@
+let humanScore = 0;
+let computerScore = 0;
+
 function getRandomNumber() {
   return Math.floor(Math.random() * 3);
 }
@@ -21,4 +24,14 @@ function getComputerChoice() {
 function getHumanChoice() {
   const humanChoice = prompt('Rock, Paper or Scissors?');
   return humanChoice;
+}
+
+function updateScore(winner) {
+  if (winner === 'human') {
+    humanScore += 1;
+  }
+
+  if (winner === 'computer') {
+    computerScore += 1;
+  }
 }
