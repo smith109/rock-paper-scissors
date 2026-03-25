@@ -1,6 +1,10 @@
 let humanScore = 0;
 let computerScore = 0;
 
+function capitalize(string) {
+  return string.at(0).toUpperCase() + string.slice(1);
+}
+
 function getRandomNumber() {
   return Math.floor(Math.random() * 3);
 }
@@ -39,4 +43,24 @@ function updateScore(winner) {
 function displayResult(message) {
   console.log(`Human: ${humanScore} || Computer: ${computerScore}`);
   console.log(message);
+}
+
+function playRound(humanChoice, computerChoice) {
+  humanChoice = humanChoice.toLowerCase();
+
+  if (humanChoice === computerChoice) {
+    displayResult(`It's a tie! You both picked ${humanChoice}`);
+  } else if (humanChoice === 'rock' && computerChoice === 'scissors') {
+    updateScore('human');
+    displayResult('You win! Rock beats scissors');
+  } else if (humanChoice === 'paper' && computerChoice === 'rock') {
+    updateScore('human');
+    displayResult('You win! Paper beats rock');
+  } else if (humanChoice === 'scissors' && computerChoice === 'paper') {
+    updateScore('human');
+    displayResult('You win! Scissors beats paper');
+  } else {
+    updateScore('computer');
+    displayResult(`You lose! ${capitalize(computerChoice)} beats ${humanChoice}`);
+  }
 }
