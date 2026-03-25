@@ -1,6 +1,3 @@
-let humanScore = 0;
-let computerScore = 0;
-
 function capitalize(string) {
   return string.at(0).toUpperCase() + string.slice(1);
 }
@@ -30,37 +27,50 @@ function getHumanChoice() {
   return humanChoice;
 }
 
-function updateScore(winner) {
-  if (winner === 'human') {
-    humanScore += 1;
+function playGame() {
+  let humanScore = 0;
+  let computerScore = 0;
+
+  function updateScore(winner) {
+    if (winner === 'human') {
+      humanScore += 1;
+    }
+
+    if (winner === 'computer') {
+      computerScore += 1;
+    }
   }
 
-  if (winner === 'computer') {
-    computerScore += 1;
+  function displayResult(message) {
+    console.log(`Human: ${humanScore} || Computer: ${computerScore}`);
+    console.log(message);
   }
-}
 
-function displayResult(message) {
-  console.log(`Human: ${humanScore} || Computer: ${computerScore}`);
-  console.log(message);
-}
+  function playRound(humanChoice, computerChoice) {
+    humanChoice = humanChoice.toLowerCase();
 
-function playRound(humanChoice, computerChoice) {
-  humanChoice = humanChoice.toLowerCase();
-
-  if (humanChoice === computerChoice) {
-    displayResult(`It's a tie! You both picked ${humanChoice}`);
-  } else if (humanChoice === 'rock' && computerChoice === 'scissors') {
-    updateScore('human');
-    displayResult('You win! Rock beats scissors');
-  } else if (humanChoice === 'paper' && computerChoice === 'rock') {
-    updateScore('human');
-    displayResult('You win! Paper beats rock');
-  } else if (humanChoice === 'scissors' && computerChoice === 'paper') {
-    updateScore('human');
-    displayResult('You win! Scissors beats paper');
-  } else {
-    updateScore('computer');
-    displayResult(`You lose! ${capitalize(computerChoice)} beats ${humanChoice}`);
+    if (humanChoice === computerChoice) {
+      displayResult(`It's a tie! You both picked ${humanChoice}`);
+    } else if (humanChoice === 'rock' && computerChoice === 'scissors') {
+      updateScore('human');
+      displayResult('You win! Rock beats scissors');
+    } else if (humanChoice === 'paper' && computerChoice === 'rock') {
+      updateScore('human');
+      displayResult('You win! Paper beats rock');
+    } else if (humanChoice === 'scissors' && computerChoice === 'paper') {
+      updateScore('human');
+      displayResult('You win! Scissors beats paper');
+    } else {
+      updateScore('computer');
+      displayResult(`You lose! ${capitalize(computerChoice)} beats ${humanChoice}`);
+    }
   }
+
+  playRound(getHumanChoice(), getComputerChoice());
+  playRound(getHumanChoice(), getComputerChoice());    
+  playRound(getHumanChoice(), getComputerChoice());  
+  playRound(getHumanChoice(), getComputerChoice());  
+  playRound(getHumanChoice(), getComputerChoice());   
 }
+
+playGame();
