@@ -66,11 +66,31 @@ function playGame() {
     }
   }
 
+  function getWinningMessage() {
+    if (humanScore === computerScore) {
+      return 'It\'s a tie. Let\'s play again.';
+    } 
+    
+    if (humanScore > computerScore) {
+      return 'You won the game! Great job!';
+    } 
+
+    if (computerScore > humanScore) {
+      return 'You Lost. Better luck next time.';
+    }
+  }
+
+  function checkGameOver() {
+    const winningMessage = getWinningMessage();
+    displayResult(winningMessage);
+  }
+
   playRound(getHumanChoice(), getComputerChoice());
   playRound(getHumanChoice(), getComputerChoice());    
   playRound(getHumanChoice(), getComputerChoice());  
   playRound(getHumanChoice(), getComputerChoice());  
-  playRound(getHumanChoice(), getComputerChoice());   
+  playRound(getHumanChoice(), getComputerChoice());  
+  checkGameOver();
 }
 
 playGame();
