@@ -29,6 +29,12 @@ function playGame() {
 
   btnContainer.addEventListener('click', handleBtnClick);
 
+  function updateScoreBoard() {
+    const scoreBoard = document.querySelector('.score-board');
+    scoreBoard.textContent = 
+      `Human: ${humanScore} | Computer: ${computerScore}`;
+  }
+
   function updateScore(winner) {
     if (winner === 'human') {
       humanScore += 1;
@@ -37,6 +43,8 @@ function playGame() {
     if (winner === 'computer') {
       computerScore += 1;
     }
+
+    updateScoreBoard();
   }
 
   function displayResult(message) {
