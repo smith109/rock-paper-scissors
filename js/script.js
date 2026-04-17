@@ -40,8 +40,8 @@ function playGame() {
   }
 
   function displayResult(message) {
-    console.log(`Human: ${humanScore} || Computer: ${computerScore}`);
-    console.log(message);
+    const roundResults = document.querySelector('.round-results');
+    roundResults.textContent = message;
   }
 
   function playRound(humanChoice, computerChoice) {
