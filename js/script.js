@@ -22,14 +22,12 @@ function getComputerChoice() {
   }
 }
 
-function getHumanChoice() {
-  const humanChoice = prompt('Rock, Paper or Scissors?');
-  return humanChoice;
-}
-
 function playGame() {
+  const btnContainer = document.querySelector('.btn-container');
   let humanScore = 0;
   let computerScore = 0;
+
+  btnContainer.addEventListener('click', handleBtnClick);
 
   function updateScore(winner) {
     if (winner === 'human') {
@@ -47,8 +45,6 @@ function playGame() {
   }
 
   function playRound(humanChoice, computerChoice) {
-    humanChoice = humanChoice.toLowerCase();
-
     if (humanChoice === computerChoice) {
       displayResult(`It's a tie! You both picked ${humanChoice}`);
     } else if (humanChoice === 'rock' && computerChoice === 'scissors') {
@@ -85,12 +81,14 @@ function playGame() {
     displayResult(winningMessage);
   }
 
-  playRound(getHumanChoice(), getComputerChoice());
-  playRound(getHumanChoice(), getComputerChoice());    
-  playRound(getHumanChoice(), getComputerChoice());  
-  playRound(getHumanChoice(), getComputerChoice());  
-  playRound(getHumanChoice(), getComputerChoice());  
-  checkGameOver();
+  function handleBtnClick(e) {
+    const target = e.target;
+    if (target.tagName !== 'BUTTON') return;
+
+    const humanChoice = target.dataset.choice;
+    const computerChoice = getComputerChoice();
+    playRound(humanChoice, computerChoice);
+  }
 }
 
 playGame();
