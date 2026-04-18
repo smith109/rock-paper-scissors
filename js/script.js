@@ -47,46 +47,46 @@ function playGame() {
     updateScoreBoard();
   }
 
-  function displayResult(message) {
+  function displayRoundResults(message) {
     const roundResults = document.querySelector('.round-results');
     roundResults.textContent = message;
   }
 
-  function playRound(humanChoice, computerChoice) {
-    if (humanChoice === computerChoice) {
-      displayResult(`It's a tie! You both picked ${humanChoice}`);
-    } else if (humanChoice === 'rock' && computerChoice === 'scissors') {
-      updateScore('human');
-      displayResult('You win! Rock beats scissors');
-    } else if (humanChoice === 'paper' && computerChoice === 'rock') {
-      updateScore('human');
-      displayResult('You win! Paper beats rock');
-    } else if (humanChoice === 'scissors' && computerChoice === 'paper') {
-      updateScore('human');
-      displayResult('You win! Scissors beats paper');
-    } else {
-      updateScore('computer');
-      displayResult(`You lose! ${capitalize(computerChoice)} beats ${humanChoice}`);
-    }
+  function displayWinningMessage(message) {  
+    const winningMessage = document.querySelector('.winning-message');
+    winningMessage.textContent = message;
   }
 
-  function getWinningMessage() {
-    if (humanScore === computerScore) {
-      return 'It\'s a tie. Let\'s play again.';
-    } 
-    
-    if (humanScore > computerScore) {
-      return 'You won the game! Great job!';
-    } 
-
-    if (computerScore > humanScore) {
-      return 'You Lost. Better luck next time.';
+  function playRound(humanChoice, computerChoice) {
+    if (humanChoice === computerChoice) {
+      displayRoundResults(`It's a tie! You both picked ${humanChoice}`);
+    } else if (humanChoice === 'rock' && computerChoice === 'scissors') {
+      updateScore('human');
+      displayRoundResults('You win! Rock beats scissors');
+    } else if (humanChoice === 'paper' && computerChoice === 'rock') {
+      updateScore('human');
+      displayRoundResults('You win! Paper beats rock');
+    } else if (humanChoice === 'scissors' && computerChoice === 'paper') {
+      updateScore('human');
+      displayRoundResults('You win! Scissors beats paper');
+    } else {
+      updateScore('computer');
+      displayRoundResults(`You lose! ${capitalize(computerChoice)} beats ${humanChoice}`);
     }
+
+    checkGameOver();
   }
 
   function checkGameOver() {
-    const winningMessage = getWinningMessage();
-    displayResult(winningMessage);
+    if (humanScore === 5) {
+      displayWinningMessage('You won the game! Great job!');
+      disableChoiceBtns();
+    } 
+
+    if (computerScore === 5) {
+      displayWinningMessage('You Lost. Better luck next time.');
+      disableChoiceBtns();
+    }
   }
 
   function handleBtnClick(e) {
@@ -96,6 +96,11 @@ function playGame() {
     const humanChoice = target.dataset.choice;
     const computerChoice = getComputerChoice();
     playRound(humanChoice, computerChoice);
+  }
+
+  function disableChoiceBtns() {
+    const choiceBtns = document.querySelectorAll('.choice-btn');
+    choiceBtns.forEach((button) => button.disabled = true);
   }
 }
 
